@@ -14,15 +14,14 @@ export const SITE = {
   url: 'https://akash-portfolio.vercel.app',
   description:
     'Akash is a content creator and brand promoter specialising in cinematography and product photography. 200+ brands and restaurants in two years.',
-  email: 'hello@akashcreates.com',
-  phone: '+91 98765 43210',
+  email: 'ajakash594@gmail.com',
   location: 'Bengaluru, India — available worldwide',
   social: {
-    instagram: 'https://instagram.com',
-    youtube: 'https://youtube.com',
-    linkedin: 'https://linkedin.com',
-    whatsapp: 'https://wa.me/919876543210',
-    twitterHandle: '@akashcreates',
+    instagram: 'https://www.instagram.com/kakashi_is_eating',
+    tiktok: 'https://www.tiktok.com/@kakashi_is_eating',
+    youtube: 'https://youtube.com/@kakashiiseating',
+    facebook: 'https://www.facebook.com/share/1bK7JmEGew/',
+    facebookProfile: 'https://www.facebook.com/share/1NhCP9LLVD/',
   },
 } as const
 

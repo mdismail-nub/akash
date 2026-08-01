@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight, Loader2, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { ArrowRight, Loader2, Mail, MapPin } from 'lucide-react'
 import { useId, useState, useTransition } from 'react'
 import { toast } from 'sonner'
 import { submitContact } from '@/app/actions/contact'
@@ -56,15 +56,29 @@ export function Contact() {
     setErrors({})
 
     startTransition(async () => {
+      // Construct mailto link with form data
+      const name = formData.get('name') as string
+      const email = formData.get('email') as string
+      const company = formData.get('company') as string
+      const projectType = formData.get('projectType') as string
+      const message = formData.get('message') as string
+
+      const subject = `New Enquiry from ${name} — ${company}`
+      const body = `From: ${name} (${email})\nProject Type: ${projectType}\n\n${message}`
+      const mailtoLink = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+      // Also submit to backend for logging/archiving
       const result = await submitContact(formData)
 
+      // Open email client regardless of backend result
+      window.location.href = mailtoLink
+
       if (result.ok) {
-        toast.success(result.message)
+        toast.success('Opening your email client...')
         form.reset()
         setProjectType('')
       } else {
-        setErrors(result.fieldErrors ?? {})
-        toast.error(result.message)
+        toast.error('Please complete the email and send it.')
       }
     })
   }
@@ -116,22 +130,6 @@ export function Contact() {
                   >
                     <Mail className="size-4 shrink-0 text-accent" aria-hidden="true" />
                     <span className="text-sm">{SITE.email}</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={SITE.social.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-4 py-3 text-ink-foreground transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none"
-                  >
-                    <MessageCircle
-                      className="size-4 shrink-0 text-accent"
-                      aria-hidden="true"
-                    />
-                    <span className="text-sm">
-                      WhatsApp — {SITE.phone}
-                    </span>
                   </a>
                 </li>
                 <li className="flex items-center gap-4 py-3 text-ink-muted">

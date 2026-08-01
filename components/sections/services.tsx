@@ -46,60 +46,81 @@ export function Services() {
             const headingId = `service-${service.id}`
 
             return (
-              <Reveal
-                as="li"
+              <ServiceCard
                 key={service.id}
-                delay={index * 0.08}
-                className="group flex flex-col bg-background p-8 transition-colors duration-500 hover:bg-card sm:p-10 lg:p-12"
-              >
-                <div className="flex items-start justify-between gap-6">
-                  <span
-                    aria-hidden="true"
-                    className="flex size-11 shrink-0 items-center justify-center rounded-sm border border-border text-foreground transition-colors duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-foreground"
-                  >
-                    <Icon className="size-5" />
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    className="font-mono text-xs text-muted-foreground/60"
-                  >
-                    0{index + 1}
-                  </span>
-                </div>
-
-                <h3
-                  id={headingId}
-                  className="display mt-8 text-2xl text-balance sm:text-3xl"
-                >
-                  {service.title}
-                </h3>
-
-                <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {service.description}
-                </p>
-
-                <ul
-                  aria-labelledby={headingId}
-                  className="mt-8 flex flex-col gap-3 border-t border-border pt-7"
-                >
-                  {service.includes.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3 text-sm text-muted-foreground"
-                    >
-                      <Check
-                        className="mt-0.5 size-4 shrink-0 text-accent"
-                        aria-hidden="true"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </Reveal>
+                service={service}
+                Icon={Icon}
+                index={index}
+                headingId={headingId}
+              />
             )
           })}
         </ul>
       </div>
     </section>
+  )
+}
+
+function ServiceCard({
+  service,
+  Icon,
+  index,
+  headingId,
+}: {
+  service: Service
+  Icon: LucideIcon
+  index: number
+  headingId: string
+}) {
+  return (
+    <Reveal
+      as="li"
+      delay={index * 0.08}
+      className="group relative flex flex-col bg-background p-8 transition-colors duration-500 hover:bg-card sm:p-10 lg:p-12"
+    >
+      <div className="flex items-start justify-between gap-6">
+        <span
+          aria-hidden="true"
+          className="flex size-11 shrink-0 items-center justify-center rounded-sm border border-border text-foreground transition-all duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-foreground group-hover:shadow-md"
+        >
+          <Icon className="size-5" />
+        </span>
+        <span
+          aria-hidden="true"
+          className="font-mono text-xs text-muted-foreground/60 transition-colors duration-500 group-hover:text-accent"
+        >
+          0{index + 1}
+        </span>
+      </div>
+
+      <h3
+        id={headingId}
+        className="display mt-8 text-2xl text-balance transition-colors duration-500 group-hover:text-foreground sm:text-3xl"
+      >
+        {service.title}
+      </h3>
+
+      <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-foreground/80 sm:text-base">
+        {service.description}
+      </p>
+
+      <ul
+        aria-labelledby={headingId}
+        className="mt-8 flex flex-col gap-3 border-t border-border pt-7"
+      >
+        {service.includes.map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-3 text-sm text-muted-foreground transition-colors duration-500 group-hover:text-foreground/70"
+          >
+            <Check
+              className="mt-0.5 size-4 shrink-0 text-accent transition-colors duration-500 group-hover:scale-110"
+              aria-hidden="true"
+            />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </Reveal>
   )
 }
