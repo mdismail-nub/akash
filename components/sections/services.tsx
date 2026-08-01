@@ -1,5 +1,9 @@
-import { Camera, Check, Film, Megaphone, Utensils } from 'lucide-react'
+'use client'
+
+import { Camera, Film, Megaphone, Utensils } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { motion } from 'motion/react'
+import { useState, useRef } from 'react'
 import { Reveal } from '@/components/shared/reveal'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { SERVICES } from '@/lib/content'
@@ -61,6 +65,111 @@ export function Services() {
   )
 }
 
+function ViewfinderCorners({
+  isHovering,
+}: {
+  isHovering: boolean
+}) {
+  const cornerSize = 16
+  const expandedSize = 24
+  
+  return (
+    <>
+      {/* Top-left corner */}
+      <motion.svg
+        width={cornerSize}
+        height={cornerSize}
+        viewBox="0 0 20 20"
+        className="absolute -left-0.5 -top-0.5 overflow-visible"
+        aria-hidden="true"
+      >
+        <motion.path
+          d="M 2 2 L 2 10 M 2 2 L 10 2"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          initial={{ strokeWidth: 1.5 }}
+          animate={{
+            strokeWidth: isHovering ? 2 : 1.5,
+          }}
+          transition={{ duration: 0.3 }}
+          className="text-foreground transition-colors duration-300 group-hover:text-accent"
+        />
+      </motion.svg>
+
+      {/* Top-right corner */}
+      <motion.svg
+        width={cornerSize}
+        height={cornerSize}
+        viewBox="0 0 20 20"
+        className="absolute -right-0.5 -top-0.5 overflow-visible"
+        aria-hidden="true"
+      >
+        <motion.path
+          d="M 18 2 L 18 10 M 18 2 L 10 2"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          initial={{ strokeWidth: 1.5 }}
+          animate={{
+            strokeWidth: isHovering ? 2 : 1.5,
+          }}
+          transition={{ duration: 0.3 }}
+          className="text-foreground transition-colors duration-300 group-hover:text-accent"
+        />
+      </motion.svg>
+
+      {/* Bottom-left corner */}
+      <motion.svg
+        width={cornerSize}
+        height={cornerSize}
+        viewBox="0 0 20 20"
+        className="absolute -bottom-0.5 -left-0.5 overflow-visible"
+        aria-hidden="true"
+      >
+        <motion.path
+          d="M 2 18 L 2 10 M 2 18 L 10 18"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          initial={{ strokeWidth: 1.5 }}
+          animate={{
+            strokeWidth: isHovering ? 2 : 1.5,
+          }}
+          transition={{ duration: 0.3 }}
+          className="text-foreground transition-colors duration-300 group-hover:text-accent"
+        />
+      </motion.svg>
+
+      {/* Bottom-right corner */}
+      <motion.svg
+        width={cornerSize}
+        height={cornerSize}
+        viewBox="0 0 20 20"
+        className="absolute -bottom-0.5 -right-0.5 overflow-visible"
+        aria-hidden="true"
+      >
+        <motion.path
+          d="M 18 18 L 18 10 M 18 18 L 10 18"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          fill="none"
+          strokeLinecap="round"
+          initial={{ strokeWidth: 1.5 }}
+          animate={{
+            strokeWidth: isHovering ? 2 : 1.5,
+          }}
+          transition={{ duration: 0.3 }}
+          className="text-foreground transition-colors duration-300 group-hover:text-accent"
+        />
+      </motion.svg>
+    </>
+  )
+}
+
 function ServiceCard({
   service,
   Icon,
@@ -72,55 +181,93 @@ function ServiceCard({
   index: number
   headingId: string
 }) {
+  const [isHovering, setIsHovering] = useState(false)
+  const cardRef = useRef<HTMLLIElement>(null)
+
   return (
     <Reveal
       as="li"
       delay={index * 0.08}
-      className="group relative flex flex-col bg-background p-8 transition-colors duration-500 hover:bg-card sm:p-10 lg:p-12"
+      ref={cardRef}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      className="group relative flex flex-col overflow-hidden bg-background transition-all duration-500 hover:shadow-lg hover:-translate-y-1 sm:p-0"
     >
-      <div className="flex items-start justify-between gap-6">
-        <span
-          aria-hidden="true"
-          className="flex size-11 shrink-0 items-center justify-center rounded-sm border border-border text-foreground transition-all duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-foreground group-hover:shadow-md"
-        >
-          <Icon className="size-5" />
-        </span>
-        <span
-          aria-hidden="true"
-          className="font-mono text-xs text-muted-foreground/60 transition-colors duration-500 group-hover:text-accent"
-        >
-          0{index + 1}
-        </span>
+      {/* Ghost numeral background */}
+      <div
+        aria-hidden="true"
+        className="absolute -right-8 -top-12 select-none font-serif text-9xl font-light text-foreground/5 pointer-events-none"
+      >
+        {String(index + 1).padStart(2, '0')}
       </div>
 
-      <h3
-        id={headingId}
-        className="display mt-8 text-2xl text-balance transition-colors duration-500 group-hover:text-foreground sm:text-3xl"
-      >
-        {service.title}
-      </h3>
+      {/* Viewfinder corner brackets */}
+      <ViewfinderCorners isHovering={isHovering} />
 
-      <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground transition-colors duration-500 group-hover:text-foreground/80 sm:text-base">
-        {service.description}
-      </p>
+      {/* Card content */}
+      <div className="relative flex flex-col gap-6 p-8 sm:p-10 lg:p-12">
+        {/* Icon in viewfinder frame */}
+        <motion.div
+          animate={{
+            scale: isHovering ? 1.08 : 1,
+            opacity: isHovering ? 1 : 0.8,
+          }}
+          transition={{ duration: 0.3 }}
+          className="flex size-12 items-center justify-center text-foreground"
+        >
+          <Icon className="size-6" />
+        </motion.div>
 
-      <ul
-        aria-labelledby={headingId}
-        className="mt-8 flex flex-col gap-3 border-t border-border pt-7"
-      >
-        {service.includes.map((item) => (
-          <li
-            key={item}
-            className="flex items-start gap-3 text-sm text-muted-foreground transition-colors duration-500 group-hover:text-foreground/70"
+        {/* Title */}
+        <div>
+          <h3
+            id={headingId}
+            className="font-serif text-3xl font-light leading-tight text-balance sm:text-4xl"
           >
-            <Check
-              className="mt-0.5 size-4 shrink-0 text-accent transition-colors duration-500 group-hover:scale-110"
-              aria-hidden="true"
-            />
-            {item}
-          </li>
-        ))}
-      </ul>
+            {service.title}
+          </h3>
+        </div>
+
+        {/* Description */}
+        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {service.description}
+        </p>
+
+        {/* Thin accent divider */}
+        <motion.div
+          className="h-px bg-gradient-to-r from-accent to-accent/0"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isHovering ? 1 : 0.4 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          style={{ originX: 0 }}
+        />
+
+        {/* Checklist with staggered items */}
+        <ul
+          aria-labelledby={headingId}
+          className="flex flex-col gap-2.5"
+        >
+          {service.includes.map((item, itemIndex) => (
+            <motion.li
+              key={item}
+              initial={{ opacity: 0, x: -8 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{
+                delay: itemIndex * 0.05 + 0.2,
+                duration: 0.4,
+              }}
+              className="flex items-start gap-3 text-sm text-muted-foreground"
+            >
+              <span
+                aria-hidden="true"
+                className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent flex-shrink-0"
+              />
+              <span>{item}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
     </Reveal>
   )
 }
