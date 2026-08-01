@@ -94,8 +94,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#F7F4EF',
+  colorScheme: 'dark',
+  themeColor: '#050505',
   width: 'device-width',
   initialScale: 1,
 }
@@ -108,7 +108,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`light bg-background ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable}`}
+      className={`dark bg-background ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable}`}
     >
       <body className="bg-background text-foreground antialiased">
         {children}

@@ -45,43 +45,43 @@ export function SiteNav() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500',
         solid
-          ? 'border-b border-border bg-background/90 backdrop-blur-md'
-          : 'border-b border-transparent bg-transparent',
+          ? 'glass shadow-luxury'
+          : 'border-b border-transparent',
       )}
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex h-18 max-w-[1600px] items-center justify-between gap-8 px-5 sm:px-8 lg:px-12"
+        className="mx-auto flex h-18 max-w-[1600px] items-center justify-between gap-8 px-5 sm:px-8 lg:px-16"
       >
-        {/* Wordmark */}
+        {/* Premium Wordmark */}
         <a
           href="#top"
           className={cn(
-            'display shrink-0 text-2xl tracking-tight transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none',
-            onDark ? 'text-ink-foreground' : 'text-foreground',
+            'font-display text-xl font-bold tracking-tight transition-all duration-500 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none',
+            onDark ? 'text-foreground/80' : 'text-foreground',
           )}
         >
           {SITE.name}
-          <span className="text-accent">.</span>
+          <span className="text-accent ml-1">Studio</span>
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-9 md:flex">
+        <ul className="hidden items-center gap-12 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 className={cn(
-                  'group relative text-sm transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none',
+                  'group relative text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none',
                   onDark
-                    ? 'text-ink-foreground/75 hover:text-ink-foreground'
-                    : 'text-muted-foreground hover:text-foreground',
+                    ? 'text-foreground/70 hover:text-foreground'
+                    : 'text-foreground/80 hover:text-foreground',
                 )}
               >
                 {link.label}
                 <span
                   aria-hidden="true"
-                  className="absolute -bottom-1.5 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full"
+                  className="absolute -bottom-2 left-0 h-0.5 w-0 bg-gradient-gold transition-all duration-400 group-hover:w-full"
                 />
               </a>
             </li>
@@ -89,17 +89,17 @@ export function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-3">
-          {/* Primary CTA */}
+          {/* Premium CTA */}
           <a
             href="#contact"
             className={cn(
-              'hidden items-center rounded-sm px-5 py-2.5 text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex',
+              'hidden items-center rounded-lg px-6 py-2.5 text-sm font-semibold transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex',
               solid
-                ? 'bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground focus-visible:ring-offset-background'
-                : 'border border-ink-foreground/30 text-ink-foreground hover:border-ink-foreground hover:bg-ink-foreground hover:text-ink focus-visible:ring-offset-transparent',
+                ? 'bg-accent text-accent-foreground hover:shadow-glow focus-visible:ring-offset-background'
+                : 'border border-foreground/30 text-foreground/80 hover:border-accent hover:text-accent focus-visible:ring-offset-transparent',
             )}
           >
-            Book a Shoot
+            Let&apos;s Talk
           </a>
 
           {/* Mobile menu trigger */}
@@ -109,8 +109,8 @@ export function SiteNav() {
             aria-label="Open menu"
             aria-expanded={menuOpen}
             className={cn(
-              'inline-flex size-11 items-center justify-center rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none md:hidden',
-              onDark ? 'text-ink-foreground' : 'text-foreground',
+              'inline-flex size-10 items-center justify-center rounded-lg transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none md:hidden',
+              onDark ? 'text-foreground/80 hover:text-foreground' : 'text-foreground hover:bg-foreground/5',
             )}
           >
             <Menu className="size-5" aria-hidden="true" />
@@ -130,19 +130,19 @@ export function SiteNav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex flex-col bg-ink md:hidden"
+            className="fixed inset-0 z-50 flex flex-col bg-background md:hidden"
           >
             <div className="flex h-18 items-center justify-between px-5">
-              <span className="display text-2xl text-ink-foreground">
+              <span className="font-display text-xl font-bold text-foreground">
                 {SITE.name}
-                <span className="text-accent">.</span>
+                <span className="text-accent ml-1">Studio</span>
               </span>
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close menu"
                 autoFocus
-                className="inline-flex size-11 items-center justify-center rounded-sm text-ink-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                className="inline-flex size-10 items-center justify-center rounded-lg text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
               >
                 <X className="size-5" aria-hidden="true" />
               </button>
@@ -159,12 +159,12 @@ export function SiteNav() {
                     duration: 0.4,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="border-b border-ink-border"
+                  className="border-b border-foreground/10"
                 >
                   <a
                     href={link.href}
                     onClick={close}
-                    className="display block py-5 text-4xl text-ink-foreground focus-visible:text-accent focus-visible:outline-none"
+                    className="font-display block py-5 text-3xl text-foreground focus-visible:text-accent focus-visible:outline-none"
                   >
                     {link.label}
                   </a>
@@ -180,9 +180,9 @@ export function SiteNav() {
                 <a
                   href="#contact"
                   onClick={close}
-                  className="flex items-center justify-center rounded-sm bg-accent px-6 py-4 text-sm font-medium text-accent-foreground"
+                  className="flex items-center justify-center rounded-lg bg-accent px-6 py-4 text-sm font-semibold text-accent-foreground transition-all duration-300 hover:shadow-glow"
                 >
-                  Book a Shoot
+                  Let&apos;s Talk
                 </a>
               </motion.li>
             </ul>

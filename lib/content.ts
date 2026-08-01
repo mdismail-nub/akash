@@ -36,16 +36,16 @@ export const NAV_LINKS: readonly NavLink[] = [
 /** Hero background rotation — cross-fades between these frames */
 export const HERO_MEDIA = [
   {
-    src: '/hero-restaurant.png',
-    alt: 'Warm, moody interior of an upscale restaurant lit by amber pendant lights',
+    src: '/hero-cinematic-1.png',
+    alt: 'Cinematic professional photography of luxury plated dish with premium lighting',
   },
   {
-    src: '/hero-chef.png',
-    alt: "Close-up of a chef's hands plating a fine dining dish with tweezers as steam rises",
+    src: '/hero-lifestyle-1.png',
+    alt: 'Professional photography studio with cinematic lighting setup and modern aesthetics',
   },
   {
-    src: '/hero-product.png',
-    alt: 'Amber glass bottle on a travertine pedestal under dramatic hard side light',
+    src: '/hero-commercial-1.png',
+    alt: 'High-end commercial product photography with sophisticated black and gold aesthetic',
   },
 ] as const
 

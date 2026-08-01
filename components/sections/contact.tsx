@@ -19,7 +19,7 @@ import { contactSchema, type ContactFieldErrors } from '@/lib/validation'
 import { cn } from '@/lib/utils'
 
 const FIELD_CLASS =
-  'h-12 w-full rounded-sm border-border bg-background px-4 text-base text-foreground placeholder:text-muted-foreground/70 focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/30'
+  'h-12 w-full rounded-lg border border-foreground/10 bg-foreground/[0.02] px-4 text-base text-foreground placeholder:text-foreground/50 focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-accent/30 backdrop-blur-sm transition-all duration-300'
 
 export function Contact() {
   const formId = useId()
@@ -89,58 +89,56 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="bg-ink py-24 sm:py-32 lg:py-40"
+      className="border-t border-foreground/10 bg-background py-20 sm:py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          {/* Pitch */}
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-16">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
+          {/* Premium Pitch */}
           <div className="lg:col-span-5">
             <Reveal>
-              <span className="eyebrow flex items-center gap-3 text-ink-muted">
-                <span aria-hidden="true" className="h-px w-8 bg-accent" />
-                Book a Shoot
+              <span className="text-xs uppercase tracking-widest font-medium text-foreground/70 flex items-center gap-3">
+                <span aria-hidden="true" className="h-px w-6 bg-gradient-gold" />
+                Let&apos;s Work Together
               </span>
             </Reveal>
 
             <Reveal delay={0.08}>
               <h2
                 id="contact-heading"
-                className="display mt-5 text-balance text-4xl text-ink-foreground sm:text-5xl lg:text-6xl"
+                className="font-display mt-6 text-balance text-5xl sm:text-6xl lg:text-7xl leading-tight text-foreground font-bold"
               >
-                Let&apos;s create something brands{' '}
-                <em className="text-accent not-italic">remember.</em>
+                Let&apos;s Create Something<br/>
+                <span className="text-accent">Extraordinary</span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.14}>
-              <p className="mt-6 max-w-md text-pretty text-base leading-relaxed text-ink-muted sm:text-lg">
-                Tell me what you&apos;re launching and roughly when. I reply to
-                every enquiry within one business day with a clear scope and a
-                flat quote.
+              <p className="mt-8 max-w-md text-pretty text-base leading-relaxed text-foreground/75 sm:text-lg">
+                Whether you need cinematic content, product photography, or a full campaign—I&apos;ll deliver premium results. Quick response, clear process, proven outcomes.
               </p>
             </Reveal>
 
-            {/* Direct contact */}
-            <Reveal delay={0.2} className="mt-10">
-              <ul className="flex flex-col gap-1 border-t border-ink-border pt-8">
+            {/* Premium Contact Links */}
+            <Reveal delay={0.2} className="mt-12">
+              <ul className="flex flex-col gap-2 border-t border-foreground/10 pt-8">
                 <li>
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="group flex items-center gap-4 py-3 text-ink-foreground transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none"
+                    className="group flex items-center gap-4 py-3 text-foreground transition-all hover:text-accent focus-visible:text-accent focus-visible:outline-none"
                   >
-                    <Mail className="size-4 shrink-0 text-accent" aria-hidden="true" />
-                    <span className="text-sm">{SITE.email}</span>
+                    <Mail className="size-5 shrink-0 text-accent" aria-hidden="true" />
+                    <span className="text-sm font-medium">{SITE.email}</span>
                   </a>
                 </li>
-                <li className="flex items-center gap-4 py-3 text-ink-muted">
-                  <MapPin className="size-4 shrink-0 text-accent" aria-hidden="true" />
+                <li className="flex items-center gap-4 py-3 text-foreground/70">
+                  <MapPin className="size-5 shrink-0 text-accent" aria-hidden="true" />
                   <span className="text-sm">{SITE.location}</span>
                 </li>
               </ul>
             </Reveal>
           </div>
 
-          {/* Form */}
+          {/* Premium Form */}
           <Reveal
             delay={0.16}
             className="lg:col-span-6 lg:col-start-7"
@@ -149,7 +147,7 @@ export function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="flex flex-col gap-6 rounded-sm bg-background p-6 sm:p-8 lg:p-10"
+              className="flex flex-col gap-8 rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-8 sm:p-10 lg:p-12 backdrop-blur-sm shadow-luxury"
             >
               <div className="grid gap-6 sm:grid-cols-2">
                 {/* Name */}

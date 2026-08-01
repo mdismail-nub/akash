@@ -1,14 +1,25 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'motion/react'
+import { ArrowRight } from 'lucide-react'
 import { Reveal } from '@/components/shared/reveal'
 import { SITE } from '@/lib/content'
 
 const SPECIALTIES = [
-  'Cinematography',
-  'Product Photography',
-  'Brand Promotion',
-  'Food & Beverage',
-  'Short-form Reels',
-  'Colour Grading',
+  { label: 'Cinematography', desc: 'Cinematic storytelling' },
+  { label: 'Product Photography', desc: 'Premium product shoots' },
+  { label: 'Brand Promotion', desc: 'Strategic campaigns' },
+  { label: 'Commercial Content', desc: 'High-impact reels' },
+  { label: 'Food & Beverage', desc: 'Restaurant marketing' },
+  { label: 'Colour Grading', desc: 'Professional post' },
+] as const
+
+const TIMELINE = [
+  { year: '2024', event: 'Reached 200+ Brand Collaborations' },
+  { year: '2024', event: 'Expanded to National Campaigns' },
+  { year: '2023', event: 'Partnered with Premium Restaurants' },
+  { year: '2023', event: 'Started Professional Content Creation' },
 ] as const
 
 export function About() {
@@ -16,97 +27,123 @@ export function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="border-b border-border bg-background py-24 sm:py-32 lg:py-40"
+      className="border-b border-foreground/10 bg-background py-20 sm:py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
-          {/* Portrait */}
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-16">
+        {/* Premium header */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16 flex items-center gap-4"
+        >
+          <span className="h-px w-12 bg-gradient-gold" />
+          <span className="text-sm font-medium tracking-widest text-foreground/70 uppercase">
+            About the Creator
+          </span>
+        </motion.div>
+
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
+          {/* Large Editorial Portrait */}
           <Reveal className="lg:col-span-5" y={32}>
             <figure className="relative">
-              <div className="relative aspect-4/5 overflow-hidden rounded-sm bg-muted">
+              <div className="relative aspect-3/4 overflow-hidden rounded-2xl bg-muted shadow-luxury">
                 <Image
                   src="/portrait-akash.png"
                   alt="Akash holding a cinema camera in a warm studio lit by soft window light"
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
                   className="object-cover"
+                  priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
-              <figcaption className="mt-4 flex items-center justify-between gap-4 text-xs text-muted-foreground">
-                <span>{SITE.location}</span>
-                <span className="eyebrow text-accent">Est. 2023</span>
+              <figcaption className="mt-6 flex flex-col gap-2 text-sm text-foreground/70">
+                <span className="font-medium">{SITE.location}</span>
+                <span className="text-xs uppercase tracking-wider text-accent">Established 2023</span>
               </figcaption>
             </figure>
           </Reveal>
 
-          {/* Bio */}
-          <div className="flex flex-col justify-center lg:col-span-7 lg:pl-8">
-            <Reveal>
-              <span className="eyebrow flex items-center gap-3 text-muted-foreground">
-                <span aria-hidden="true" className="h-px w-8 bg-accent" />
-                About
-              </span>
-            </Reveal>
-
+          {/* Editorial Content */}
+          <div className="flex flex-col justify-start gap-10 lg:col-span-7">
+            {/* Premium Headline */}
             <Reveal delay={0.08}>
               <h2
                 id="about-heading"
-                className="display mt-5 text-balance text-4xl sm:text-5xl lg:text-6xl"
+                className="font-display text-balance text-5xl sm:text-6xl lg:text-6xl leading-tight text-foreground"
               >
-                I shoot the thing people{' '}
-                <em className="text-accent not-italic">remember.</em>
+                Premium Commercial Content<br />
+                <span className="text-accent">That Converts</span>
               </h2>
             </Reveal>
 
-            <div className="mt-8 flex flex-col gap-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {/* Editorial Text */}
+            <div className="space-y-6 text-lg leading-relaxed text-foreground/80">
               <Reveal delay={0.14}>
                 <p className="text-pretty">
-                  I&apos;m Akash. For the last two years I&apos;ve been the person
-                  brands and restaurants call when their product deserves better
-                  than a phone photo. That&apos;s taken me through 200+ kitchens,
-                  studios, bars and warehouses — and taught me that good content
-                  is far less about gear than it is about paying attention.
+                  For over 2 years, I&apos;ve been the creative partner 200+ brands trust with their most important visual storytelling. From intimate restaurant launches to national campaigns, my work sits at the intersection of cinematic quality and commercial strategy.
                 </p>
               </Reveal>
 
               <Reveal delay={0.2}>
                 <p className="text-pretty">
-                  My work sits between cinematography and product photography. I
-                  light a plate of food the way you&apos;d light a face, and I cut
-                  a fifteen-second reel with the same care I&apos;d give a
-                  thirty-second spot. Every frame has a job: make someone stop
-                  scrolling, then make them want it.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.26}>
-                <p className="text-pretty">
-                  I keep sets small, calm and fast. You&apos;ll get a shot list
-                  before we start, a rough cut within 48 hours, and files in every
-                  format you actually need — not a folder of raw exports and a
-                  shrug.
+                  Every frame is intentional. Whether lighting a dish, framing a space, or cutting a 15-second reel that stops thumbs mid-scroll—the goal is always the same: make your brand unforgettable and make viewers want to take action.
                 </p>
               </Reveal>
             </div>
 
-            {/* Specialties */}
-            <Reveal delay={0.32} className="mt-10">
-              <ul className="flex flex-wrap gap-2" aria-label="Specialties">
-                {SPECIALTIES.map((specialty) => (
-                  <li
-                    key={specialty}
-                    className="rounded-sm border border-border bg-card px-3.5 py-2 text-xs text-muted-foreground"
+            {/* Premium Specialties Grid */}
+            <Reveal delay={0.26} className="pt-4">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                {SPECIALTIES.map((specialty, idx) => (
+                  <motion.div
+                    key={specialty.label}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.32 + idx * 0.05, duration: 0.6 }}
+                    className="rounded-lg border border-foreground/10 bg-foreground/[0.02] p-4 backdrop-blur-sm"
                   >
-                    {specialty}
-                  </li>
+                    <p className="font-semibold text-foreground text-sm">{specialty.label}</p>
+                    <p className="text-xs text-foreground/60 mt-1">{specialty.desc}</p>
+                  </motion.div>
                 ))}
-              </ul>
+              </div>
             </Reveal>
 
-            {/* Signature */}
-            <Reveal delay={0.38} className="mt-10">
-              <p className="display text-3xl text-foreground">Akash</p>
-              <p className="mt-1 text-xs text-muted-foreground">{SITE.role}</p>
+            {/* Timeline */}
+            <Reveal delay={0.4} className="pt-8">
+              <div className="space-y-4">
+                <p className="text-xs font-medium uppercase tracking-widest text-foreground/60">Journey</p>
+                <div className="space-y-3">
+                  {TIMELINE.map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -12 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.45 + idx * 0.06, duration: 0.6 }}
+                      className="flex items-start gap-4 pb-3 border-b border-foreground/5 last:border-0"
+                    >
+                      <span className="font-display text-sm font-bold text-accent min-w-fit">{item.year}</span>
+                      <span className="text-sm text-foreground/75 pt-1">{item.event}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* CTA */}
+            <Reveal delay={0.52} className="pt-4">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-3 px-6 py-3 rounded-lg border border-accent/50 text-accent font-semibold transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+              >
+                Start Your Project
+                <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Reveal>
           </div>
         </div>

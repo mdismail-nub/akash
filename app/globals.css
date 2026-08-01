@@ -48,45 +48,49 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  /* Warm off-white paper */
-  --background: oklch(0.9745 0.0085 84.6);
-  --foreground: oklch(0.2 0.006 60);
+  /* Pure Black - Primary Background */
+  --background: #050505;
+  --foreground: #FAFAFA;
 
-  --card: oklch(0.9885 0.005 84.6);
-  --card-foreground: oklch(0.2 0.006 60);
-  --popover: oklch(0.9885 0.005 84.6);
-  --popover-foreground: oklch(0.2 0.006 60);
+  /* Slightly elevated surfaces */
+  --card: #0f0f0f;
+  --card-foreground: #FAFAFA;
+  --popover: #0f0f0f;
+  --popover-foreground: #FAFAFA;
 
-  /* Deep charcoal — primary actions & display type */
-  --primary: oklch(0.2 0.006 60);
-  --primary-foreground: oklch(0.9745 0.0085 84.6);
+  /* Primary Black for text/contrast */
+  --primary: #FAFAFA;
+  --primary-foreground: #050505;
 
-  /* Warm sand */
-  --secondary: oklch(0.9375 0.009 82);
-  --secondary-foreground: oklch(0.2 0.006 60);
-  --muted: oklch(0.9375 0.009 82);
-  --muted-foreground: oklch(0.475 0.012 65);
+  /* Warm Gold Accent */
+  --secondary: #D4AF37;
+  --secondary-foreground: #050505;
+  --muted: #2a2a2a;
+  --muted-foreground: #b0b0b0;
 
-  /* Vivid brand orange — used sparingly */
-  --accent: oklch(0.62 0.2 36);
-  --accent-light: oklch(0.95 0.04 40);
-  --accent-foreground: oklch(0.99 0.004 84.6);
+  /* Gold Brand */
+  --accent: #D4AF37;
+  --accent-light: #e8c547;
+  --accent-foreground: #050505;
 
-  --destructive: oklch(0.505 0.185 27);
-  --destructive-foreground: oklch(0.99 0.004 84.6);
+  /* Destructive remains red */
+  --destructive: #ef4444;
+  --destructive-foreground: #FAFAFA;
 
-  --border: oklch(0.885 0.01 80);
-  --input: oklch(0.885 0.01 80);
-  --ring: oklch(0.585 0.148 42);
+  /* Borders for glass effects */
+  --border: #ffffff12;
+  --input: #1a1a1a;
+  --ring: #D4AF37;
 
-  --ink: oklch(0.155 0.007 55);
-  --ink-foreground: oklch(0.965 0.008 84.6);
-  --ink-muted: oklch(0.68 0.012 78);
-  --ink-border: oklch(1 0 0 / 14%);
+  /* Editorial dark surfaces */
+  --ink: #050505;
+  --ink-foreground: #FAFAFA;
+  --ink-muted: #3a3a3a;
+  --ink-border: #ffffff08;
 
-  --radius: 0.25rem;
+  --radius: 1rem;
 }
 
 @layer base {
@@ -159,4 +163,48 @@
 
 @utility animate-marquee {
   animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+}
+
+/* Premium glassmorphism */
+@utility glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Luxury shadow effects */
+@utility shadow-luxury {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+@utility shadow-glow {
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+}
+
+/* Gold gradient text */
+@utility gradient-gold {
+  background: linear-gradient(135deg, #D4AF37, #e8c547);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

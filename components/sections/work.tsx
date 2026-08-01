@@ -37,27 +37,27 @@ export function Work() {
     <section
       id="work"
       aria-labelledby="work-heading"
-      className="border-b border-border bg-background py-24 sm:py-32 lg:py-40"
+      className="border-b border-foreground/10 bg-background py-20 sm:py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-16">
         <SectionHeading
-          eyebrow="Selected Work"
-          title="Frames that earned"
-          emphasis="their keep."
-          description="A cross-section of restaurant films, product campaigns and short-form work. Tap any project to see what was delivered."
+          eyebrow="Premium Portfolio"
+          title="Cinematic work that"
+          emphasis="converts viewers to customers."
+          description="Curated selection of restaurant films, product campaigns, and commercial content. Explore projects that drove real results."
           className="max-w-2xl"
         />
 
-        {/* Filter pills */}
+        {/* Premium Filter pills */}
         <div
           role="tablist"
           aria-label="Filter work by category"
-          className="mt-12 flex flex-wrap gap-2 sm:mt-14"
+          className="mt-12 flex flex-wrap gap-3 sm:mt-14"
         >
           {WORK_FILTERS.map((option) => {
             const active = filter === option.value
             return (
-              <button
+              <motion.button
                 key={option.value}
                 type="button"
                 role="tab"
@@ -66,15 +66,17 @@ export function Work() {
                   setFilter(option.value)
                   setOpenIndex(null)
                 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className={cn(
-                  'rounded-sm border px-4 py-2.5 text-sm transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none',
+                  'rounded-lg px-5 py-2.5 text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none',
                   active
-                    ? 'border-primary bg-primary text-primary-foreground'
-                    : 'border-border bg-transparent text-muted-foreground hover:border-foreground/40 hover:text-foreground',
+                    ? 'bg-accent text-accent-foreground shadow-glow'
+                    : 'border border-foreground/20 text-foreground/70 hover:border-accent hover:text-accent',
                 )}
               >
                 {option.label}
-              </button>
+              </motion.button>
             )
           })}
         </div>
@@ -103,11 +105,12 @@ export function Work() {
                   }}
                   className="break-inside-avoid"
                 >
-                  <button
+                  <motion.button
                     type="button"
                     onClick={() => setOpenIndex(index)}
                     aria-label={`View project: ${item.title} for ${item.client}`}
-                    className="group relative block w-full overflow-hidden rounded-sm bg-muted text-left focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none"
+                    whileHover={{ y: -4 }}
+                    className="group relative block w-full overflow-hidden rounded-xl bg-muted text-left focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none shadow-luxury transition-all duration-300"
                   >
                     <div className={cn('relative w-full', ASPECT[item.span])}>
                       {!isLoaded ? (
@@ -124,42 +127,45 @@ export function Work() {
                           setLoaded((prev) => ({ ...prev, [item.id]: true }))
                         }
                         className={cn(
-                          'object-cover transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]',
+                          'object-cover transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]',
                           isLoaded ? 'opacity-100' : 'opacity-0',
                         )}
                       />
 
-                      {/* Hover overlay */}
+                      {/* Premium hover overlay */}
                       <div
                         aria-hidden="true"
-                        className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
+                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100"
                       />
 
                       {/* Video affordance */}
                       {item.kind === 'video' ? (
-                        <span
+                        <motion.span
                           aria-hidden="true"
-                          className="absolute right-4 top-4 flex size-10 items-center justify-center rounded-full bg-ink/55 text-ink-foreground backdrop-blur-sm transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground"
+                          whileHover={{ scale: 1.1 }}
+                          className="absolute right-4 top-4 flex size-11 items-center justify-center rounded-full glass text-foreground transition-colors duration-500 group-hover:bg-accent group-hover:text-accent-foreground"
                         >
-                          <Play className="size-3.5 fill-current" />
-                        </span>
+                          <Play className="size-4 fill-current" />
+                        </motion.span>
                       ) : null}
 
-                      {/* Caption */}
-                      <div className="absolute inset-x-0 bottom-0 translate-y-3 p-5 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 sm:p-6">
-                        <p className="eyebrow text-accent">{item.client}</p>
-                        <div className="mt-2 flex items-end justify-between gap-3">
-                          <h3 className="display text-xl text-ink-foreground sm:text-2xl">
+                      {/* Premium Caption */}
+                      <div className="absolute inset-x-0 bottom-0 translate-y-4 p-6 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                        <p className="text-xs uppercase tracking-widest text-accent font-medium">{item.client}</p>
+                        <div className="mt-3 flex items-end justify-between gap-3">
+                          <h3 className="font-display text-lg sm:text-xl font-bold text-foreground">
                             {item.title}
                           </h3>
-                          <ArrowUpRight
-                            className="size-5 shrink-0 text-ink-foreground"
-                            aria-hidden="true"
-                          />
+                          <motion.div whileHover={{ x: 2, y: -2 }}>
+                            <ArrowUpRight
+                              className="size-5 shrink-0 text-foreground"
+                              aria-hidden="true"
+                            />
+                          </motion.div>
                         </div>
                       </div>
                     </div>
-                  </button>
+                  </motion.button>
 
                   {/* Always-visible label for mobile / no-hover devices */}
                   <div className="mt-3 flex items-baseline justify-between gap-3">

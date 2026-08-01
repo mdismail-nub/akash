@@ -21,30 +21,28 @@ export function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="border-b border-border bg-secondary py-24 sm:py-32 lg:py-40"
+      className="border-b border-foreground/10 bg-background py-20 sm:py-28 lg:py-36"
     >
-      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-12">
+      <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-16">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
           <SectionHeading
             className="lg:col-span-5"
             eyebrow="Services"
-            title="What I can"
-            emphasis="make for you."
+            title="Premium Creative"
+            emphasis="Services"
           />
           <Reveal
             delay={0.12}
             className="flex items-end lg:col-span-6 lg:col-start-7"
           >
-            <p className="max-w-md text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Four ways to work together. Most projects blend two or three —
-              tell me what you&apos;re launching and I&apos;ll tell you what it
-              actually needs.
+            <p className="max-w-md text-pretty text-base leading-relaxed text-foreground/75 sm:text-lg">
+              Specialized services designed for brands that demand premium quality. Each offering combines cinematography expertise with strategic brand thinking.
             </p>
           </Reveal>
         </div>
 
-        {/* Service cards */}
-        <ul className="mt-16 grid gap-px overflow-hidden rounded-sm border border-border bg-border sm:mt-20 sm:grid-cols-2">
+        {/* Premium Service cards */}
+        <ul className="mt-16 grid gap-4 sm:mt-20 sm:grid-cols-2 lg:gap-6">
           {SERVICES.map((service, index) => {
             const Icon = ICONS[service.icon]
             const headingId = `service-${service.id}`
@@ -188,64 +186,54 @@ function ServiceCard({
       as="li"
       delay={index * 0.08}
     >
-      <div
+      <motion.div
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className="group relative flex flex-col overflow-hidden bg-background transition-all duration-500 hover:shadow-lg hover:-translate-y-1 sm:p-0"
+        whileHover={{ y: -6 }}
+        className="group relative flex flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.02] backdrop-blur-sm transition-all duration-500 hover:shadow-luxury hover:border-accent/50"
       >
-      {/* Ghost numeral background */}
-      <div
-        aria-hidden="true"
-        className="absolute -right-8 -top-12 select-none font-serif text-9xl font-light text-foreground/5 pointer-events-none"
-      >
-        {String(index + 1).padStart(2, '0')}
-      </div>
-
-      {/* Viewfinder corner brackets */}
-      <ViewfinderCorners isHovering={isHovering} />
-
-      {/* Card content */}
-      <div className="relative flex flex-col gap-6 p-8 sm:p-10 lg:p-12">
-        {/* Icon in viewfinder frame */}
+      {/* Premium card content */}
+      <div className="relative flex flex-col gap-8 p-8 sm:p-10 lg:p-12">
+        {/* Premium Icon */}
         <motion.div
           animate={{
-            scale: isHovering ? 1.08 : 1,
-            opacity: isHovering ? 1 : 0.8,
+            scale: isHovering ? 1.1 : 1,
+            color: isHovering ? '#D4AF37' : 'rgb(250, 250, 250)',
           }}
           transition={{ duration: 0.3 }}
-          className="flex size-12 items-center justify-center text-foreground"
+          className="flex size-14 items-center justify-center rounded-lg bg-accent/10 text-accent"
         >
-          <Icon className="size-6" />
+          <Icon className="size-7" />
         </motion.div>
 
         {/* Title */}
         <div>
           <h3
             id={headingId}
-            className="font-serif text-3xl font-light leading-tight text-balance sm:text-4xl"
+            className="font-display text-2xl sm:text-3xl font-bold leading-tight text-balance text-foreground"
           >
             {service.title}
           </h3>
         </div>
 
         {/* Description */}
-        <p className="max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
+        <p className="max-w-sm text-sm leading-relaxed text-foreground/70 sm:text-base">
           {service.description}
         </p>
 
-        {/* Thin accent divider */}
+        {/* Premium accent line */}
         <motion.div
-          className="h-px bg-gradient-to-r from-accent to-accent/0"
+          className="h-0.5 bg-gradient-gold"
           initial={{ scaleX: 0 }}
-          animate={{ scaleX: isHovering ? 1 : 0.4 }}
+          animate={{ scaleX: isHovering ? 1 : 0.3 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           style={{ originX: 0 }}
         />
 
-        {/* Checklist with staggered items */}
+        {/* Premium Checklist */}
         <ul
           aria-labelledby={headingId}
-          className="flex flex-col gap-2.5"
+          className="flex flex-col gap-3"
         >
           {service.includes.map((item, itemIndex) => (
             <motion.li
@@ -257,18 +245,18 @@ function ServiceCard({
                 delay: itemIndex * 0.05 + 0.2,
                 duration: 0.4,
               }}
-              className="flex items-start gap-3 text-sm text-muted-foreground"
+              className="flex items-start gap-3 text-sm text-foreground/70"
             >
               <span
                 aria-hidden="true"
-                className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent flex-shrink-0"
+                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-gold flex-shrink-0"
               />
               <span>{item}</span>
             </motion.li>
           ))}
         </ul>
       </div>
-      </div>
+      </motion.div>
     </Reveal>
   )
 }

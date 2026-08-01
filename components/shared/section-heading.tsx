@@ -34,13 +34,13 @@ export function SectionHeading({
       <Reveal>
         <span
           className={cn(
-            'eyebrow flex items-center gap-3',
-            isInk ? 'text-ink-muted' : 'text-muted-foreground',
+            'text-xs uppercase tracking-widest font-medium flex items-center gap-3',
+            isInk ? 'text-foreground/70' : 'text-foreground/70',
           )}
         >
           <span
             aria-hidden="true"
-            className="h-px w-8 shrink-0 bg-accent"
+            className="h-px w-6 shrink-0 bg-gradient-gold"
           />
           {eyebrow}
         </span>
@@ -49,15 +49,15 @@ export function SectionHeading({
       <Reveal delay={0.08}>
         <h2
           className={cn(
-            'heading text-balance text-4xl sm:text-5xl lg:text-6xl',
-            isInk ? 'text-ink-foreground' : 'text-foreground',
+            'font-display font-bold text-balance text-5xl sm:text-6xl lg:text-7xl leading-tight',
+            isInk ? 'text-foreground' : 'text-foreground',
           )}
         >
           {title}
           {emphasis ? (
             <>
-              {' '}
-              <em className="text-accent not-italic">{emphasis}</em>
+              <br />
+              <span className="text-accent">{emphasis}</span>
             </>
           ) : null}
         </h2>
@@ -69,7 +69,7 @@ export function SectionHeading({
             className={cn(
               'max-w-xl text-pretty text-base leading-relaxed sm:text-lg',
               align === 'center' && 'mx-auto',
-              isInk ? 'text-ink-muted' : 'text-muted-foreground',
+              isInk ? 'text-foreground/75' : 'text-foreground/75',
             )}
           >
             {description}
