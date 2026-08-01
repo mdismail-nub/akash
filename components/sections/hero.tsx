@@ -66,11 +66,24 @@ export function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-end px-5 pb-10 pt-32 sm:px-8 sm:pb-14 lg:px-12">
         <div className="max-w-5xl">
+          {/* Availability badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2.5 rounded-full bg-accent-light px-4 py-2"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <span className="text-xs font-medium tracking-wider text-foreground/80 uppercase">
+              Available for new shoots
+            </span>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="eyebrow flex items-center gap-3 text-ink-muted"
+            className="eyebrow flex items-center gap-3 text-ink-muted mt-6"
           >
             <span aria-hidden="true" className="h-px w-8 bg-accent" />
             {SITE.tagline}

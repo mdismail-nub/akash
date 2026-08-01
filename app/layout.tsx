@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
+import { Geist, Geist_Mono, Instrument_Serif, Space_Grotesk } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import { SITE } from '@/lib/content'
 import './globals.css'
@@ -21,6 +21,13 @@ const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-instrument-serif',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-display-bold',
   display: 'swap',
 })
 
@@ -101,7 +108,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`light bg-background ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      className={`light bg-background ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${spaceGrotesk.variable}`}
     >
       <body className="bg-background text-foreground antialiased">
         {children}
