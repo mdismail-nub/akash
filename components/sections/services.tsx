@@ -3,7 +3,7 @@
 import { Camera, Film, Megaphone, Utensils } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { motion } from 'motion/react'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { Reveal } from '@/components/shared/reveal'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { SERVICES } from '@/lib/content'
@@ -182,17 +182,17 @@ function ServiceCard({
   headingId: string
 }) {
   const [isHovering, setIsHovering] = useState(false)
-  const cardRef = useRef<HTMLLIElement>(null)
 
   return (
     <Reveal
       as="li"
       delay={index * 0.08}
-      ref={cardRef}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-      className="group relative flex flex-col overflow-hidden bg-background transition-all duration-500 hover:shadow-lg hover:-translate-y-1 sm:p-0"
     >
+      <div
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        className="group relative flex flex-col overflow-hidden bg-background transition-all duration-500 hover:shadow-lg hover:-translate-y-1 sm:p-0"
+      >
       {/* Ghost numeral background */}
       <div
         aria-hidden="true"
@@ -267,6 +267,7 @@ function ServiceCard({
             </motion.li>
           ))}
         </ul>
+      </div>
       </div>
     </Reveal>
   )

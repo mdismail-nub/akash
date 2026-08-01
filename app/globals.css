@@ -6,6 +6,7 @@
 
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-bold), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
@@ -16,6 +17,7 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -67,8 +69,9 @@
   --muted: oklch(0.9375 0.009 82);
   --muted-foreground: oklch(0.475 0.012 65);
 
-  /* Terracotta accent — used sparingly */
-  --accent: oklch(0.585 0.148 42);
+  /* Vivid brand orange — used sparingly */
+  --accent: oklch(0.62 0.2 36);
+  --accent-light: oklch(0.95 0.04 40);
   --accent-foreground: oklch(0.99 0.004 84.6);
 
   --destructive: oklch(0.505 0.185 27);
@@ -123,10 +126,17 @@
 }
 
 @utility display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 0.98;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+@utility heading {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1;
 }
 
 @utility eyebrow {

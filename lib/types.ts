@@ -54,6 +54,17 @@ export interface NavLink {
   readonly label: string
 }
 
+export interface Reel {
+  readonly url: string
+  readonly platform: 'tiktok' | 'instagram' | 'youtube'
+  readonly thumbnail?: string
+  readonly title?: string
+}
+
+export interface ReelWithMetadata extends Reel {
+  readonly thumbnail: string
+}
+
 export const WORK_FILTERS = [
   { value: 'all', label: 'All Work' },
   { value: 'restaurants', label: 'Restaurants' },

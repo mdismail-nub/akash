@@ -315,14 +315,14 @@ export const TESTIMONIALS: readonly Testimonial[] = [
   },
 ]
 
-/** Latest reels teaser — links out to Instagram */
+/** Latest reels — real social media links with platform info */
 export const REELS = [
-  { image: '/work-pasta.png', alt: 'Fresh pasta reel still', views: '2.4M' },
-  { image: '/work-cocktail.png', alt: 'Cocktail bar reel still', views: '890K' },
-  { image: '/work-burger.png', alt: 'Burger hero film still', views: '3.1M' },
-  { image: '/work-cafe.png', alt: 'Cafe morning reel still', views: '1.7M' },
-  { image: '/work-sneaker.png', alt: 'Sneaker campaign reel still', views: '640K' },
-  { image: '/work-interior.png', alt: 'Restaurant walkthrough reel still', views: '410K' },
+  { url: 'https://vt.tiktok.com/ZS4B9RLP7/', platform: 'tiktok' as const },
+  { url: 'https://vt.tiktok.com/ZS4BHhrMy/', platform: 'tiktok' as const },
+  { url: 'https://www.instagram.com/reel/DUkhc6uERYv/', platform: 'instagram' as const },
+  { url: 'https://www.instagram.com/reel/DXo_rpekUIu/', platform: 'instagram' as const },
+  { url: 'https://www.instagram.com/reel/DV8LhaHEdpe/', platform: 'instagram' as const },
+  { url: 'https://youtube.com/shorts/Tv0uAnF1fSA', platform: 'youtube' as const },
 ] as const
 
 // Featured projects now use the first 6 items from WORK array
