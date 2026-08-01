@@ -1,5 +1,6 @@
-import { Instagram, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import Image from 'next/image'
+import { InstagramIcon } from '@/components/shared/brand-icons'
 import { Reveal } from '@/components/shared/reveal'
 import { REELS, SITE } from '@/lib/content'
 
@@ -36,7 +37,7 @@ export function Reels() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2.5 rounded-sm border border-border px-5 py-3 text-sm text-foreground transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none"
             >
-              <Instagram className="size-4" aria-hidden="true" />
+              <InstagramIcon className="size-4" />
               Follow on Instagram
             </a>
           </Reveal>
