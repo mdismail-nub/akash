@@ -7,6 +7,7 @@ import { REELS, SITE } from '@/lib/content'
 export function Reels() {
   return (
     <section
+      id="reels"
       aria-labelledby="reels-heading"
       className="border-b border-border bg-background py-24 sm:py-32"
     >
