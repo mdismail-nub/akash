@@ -36,7 +36,7 @@ export function Reels() {
               href={SITE.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 rounded-sm border border-border px-5 py-3 text-sm text-foreground transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="group inline-flex items-center gap-2.5 rounded-sm border border-accent/40 bg-accent/5 px-5 py-3 text-sm text-foreground transition-all duration-300 hover:border-accent hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               <InstagramIcon className="size-4" />
               Follow on Instagram

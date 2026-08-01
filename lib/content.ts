@@ -14,15 +14,14 @@ export const SITE = {
   url: 'https://akash-portfolio.vercel.app',
   description:
     'Akash is a content creator and brand promoter specialising in cinematography and product photography. 200+ brands and restaurants in two years.',
-  email: 'hello@akashcreates.com',
-  phone: '+91 98765 43210',
+  email: 'ajakash594@gmail.com',
   location: 'Bengaluru, India — available worldwide',
   social: {
-    instagram: 'https://instagram.com',
-    youtube: 'https://youtube.com',
-    linkedin: 'https://linkedin.com',
-    whatsapp: 'https://wa.me/919876543210',
-    twitterHandle: '@akashcreates',
+    instagram: 'https://www.instagram.com/kakashi_is_eating',
+    tiktok: 'https://www.tiktok.com/@kakashi_is_eating',
+    youtube: 'https://youtube.com/@kakashiiseating',
+    facebook: 'https://www.facebook.com/share/1bK7JmEGew/',
+    facebookProfile: 'https://www.facebook.com/share/1NhCP9LLVD/',
   },
 } as const
 
@@ -326,50 +325,8 @@ export const REELS = [
   { image: '/work-interior.png', alt: 'Restaurant walkthrough reel still', views: '410K' },
 ] as const
 
-export const FEATURED_PROJECTS = [
-  {
-    id: 'harvest-restaurant',
-    brand: 'Harvest Restaurant',
-    category: 'Restaurant Campaign',
-    description: 'Farm-to-table brand reveal across 3 social platforms. 450K views in the first week.',
-    image: '/featured-harvest.png',
-  },
-  {
-    id: 'luxe-skincare',
-    brand: 'Nordwell',
-    category: 'Product Photography',
-    description: 'Luxury skincare launch campaign — 18 stills across platform-native formats.',
-    image: '/featured-luxe-skincare.png',
-  },
-  {
-    id: 'atelier-coffee',
-    brand: 'Atelier Coffee',
-    category: 'Cinematography',
-    description: 'Specialty roaster brand film. 2.8M organic reach on launch day.',
-    image: '/featured-atelier-coffee.png',
-  },
-  {
-    id: 'footwear-campaign',
-    brand: 'Atlas Provisions',
-    category: 'Product Campaign',
-    description: 'Full footwear line shot in a single day. Zero reshoots, delivered on time.',
-    image: '/featured-footwear.png',
-  },
-  {
-    id: 'fusion-restaurant',
-    brand: 'Marigold Kitchen',
-    category: 'Menu & Ambience',
-    description: 'Contemporary fusion menu shoot. Every plate styled for the feed.',
-    image: '/featured-fusion.png',
-  },
-  {
-    id: 'timepiece-luxury',
-    brand: 'Lumen Studio',
-    category: 'Luxury Product',
-    description: 'Premium watch brand campaign. E-commerce conversion +32% month-over-month.',
-    image: '/featured-timepiece.png',
-  },
-] as const
+// Featured projects now use the first 6 items from WORK array
+export const FEATURED_PROJECTS = WORK.slice(0, 6) as const
 
 export const PROJECT_TYPES = [
   'Brand Promotion Content',

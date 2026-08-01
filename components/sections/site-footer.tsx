@@ -1,17 +1,18 @@
 import Link from 'next/link'
 import {
   InstagramIcon,
-  LinkedinIcon,
-  WhatsappIcon,
+  TiktokIcon,
   YoutubeIcon,
+  FacebookIcon,
 } from '@/components/shared/brand-icons'
 import { NAV_LINKS, SITE } from '@/lib/content'
 
 const SOCIALS = [
   { href: SITE.social.instagram, label: 'Instagram', Icon: InstagramIcon },
+  { href: SITE.social.tiktok, label: 'TikTok', Icon: TiktokIcon },
   { href: SITE.social.youtube, label: 'YouTube', Icon: YoutubeIcon },
-  { href: SITE.social.linkedin, label: 'LinkedIn', Icon: LinkedinIcon },
-  { href: SITE.social.whatsapp, label: 'WhatsApp', Icon: WhatsappIcon },
+  { href: SITE.social.facebook, label: 'Facebook', Icon: FacebookIcon },
+  { href: SITE.social.facebookProfile, label: 'Facebook (Profile)', Icon: FacebookIcon, title: 'Profile' },
 ] as const
 
 export function SiteFooter() {
@@ -65,23 +66,16 @@ export function SiteFooter() {
                     {SITE.email}
                   </a>
                 </li>
-                <li>
-                  <a
-                    href={`tel:${SITE.phone.replace(/\s/g, '')}`}
-                    className="text-sm text-foreground/80 transition-colors hover:text-accent"
-                  >
-                    {SITE.phone}
-                  </a>
-                </li>
               </ul>
               <ul className="mt-6 flex items-center gap-2">
-                {SOCIALS.map(({ href, label, Icon }) => (
+                {SOCIALS.map(({ href, label, Icon, title }) => (
                   <li key={label}>
                     <a
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={label}
+                      aria-label={title ? `${label} — ${title}` : label}
+                      title={title}
                       className="flex size-10 items-center justify-center rounded-sm border border-border text-foreground/70 transition-colors hover:border-accent hover:text-accent"
                     >
                       <Icon className="size-4" aria-hidden="true" />
